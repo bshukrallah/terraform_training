@@ -9,5 +9,6 @@ resource "aws_instance" "my_first_server" {
     instance_type = "t2.micro"
     tags = {
       "Name" = "Update!!!"
+      "Another" = "TAG!!!"
     }
 }
