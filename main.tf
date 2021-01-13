@@ -6,8 +6,7 @@ resource "aws_instance" "my_first_server" {
         associate_public_ip_address = true
     vpc_security_group_ids = [aws_security_group.allowSSH.id]
     tags = {
-      "Name" = "Update!!!"
-      "Another" = "TAG!!!"
+      "Name" = "VM_TF"
     }
 }
 
