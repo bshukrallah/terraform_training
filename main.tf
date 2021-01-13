@@ -23,16 +23,15 @@ resource "aws_key_pair" "instance-key" {
 }
 
 data "aws_availability_zones" "azs" {
-        provider = aws.region-master
+        provider = aws.terraformTest
         state = "available"
 }
 
 resource "aws_subnet" "subnet-tf" {
         provider = aws.terraformTest
         availability_zone = element(data.aws_availability_zones.azs.names, 0)
-        vpc_id = aws_vpc.vpc.newVpc.id
+        vpc_id = aws_vpc.newVpc.id
         cidr_block = "10.0.1.0/24"
-}
 }
 
 resource "aws_security_group" "allowSSH" {
