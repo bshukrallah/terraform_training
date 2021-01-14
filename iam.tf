@@ -46,12 +46,12 @@ resource "aws_iam_role" "TFAdminRole" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
       "Effect": "Allow",
-      "Sid": ""
+      "Principal": {
+        "AWS": "arn:aws:iam::032989342172:role/admin"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {}
     }
   ]
 }
@@ -66,5 +66,3 @@ resource "aws_iam_policy_attachment" "test-attach" {
   roles      = [aws_iam_role.TFAdminRole.name]
   policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
 }
-
-
