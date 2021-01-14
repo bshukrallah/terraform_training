@@ -1,6 +1,7 @@
 resource "aws_instance" "my_first_server" {
     ami = "ami-0be2609ba883822ec"
     provider = aws.terraformTest
+    subnet_id = aws_subnet.subnet-tf.id
     instance_type = "t2.micro"
     key_name = aws_key_pair.instance-key.key_name
         associate_public_ip_address = true
@@ -35,10 +36,11 @@ resource "aws_subnet" "subnet-tf" {
 }
 
 resource "aws_security_group" "allowSSH" {
+    provider = aws.terraformTest
     name = "allow ssh"
     description = "allow ssh"
     vpc_id = aws_vpc.newVpc.id
-    provider = aws.terraformTest
+
     ingress {
     description = "allow ssh"
     from_port = 22
